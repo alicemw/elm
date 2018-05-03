@@ -5,7 +5,8 @@ vue.use(vuex)
 const state = {
     userinfo:{
         username:'login/register',
-        userphone:'no cellphone'
+        userphone:'no cellphone',
+        useravatar:null
     },
     isLogin:false,
     codenum:null

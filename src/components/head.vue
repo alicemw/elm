@@ -67,6 +67,9 @@ export default {
         width: 50%;
         transform: translateX(-50%);
         display: block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
     }
     .head_login {
         position: absolute;

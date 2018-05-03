@@ -6,7 +6,8 @@ import router from './router'
 import store from './store'
 
 Vue.config.productionTip = false
-
+//引入mock数据
+require('./mock.js')
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

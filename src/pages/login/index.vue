@@ -1,5 +1,5 @@
 <template>
-  <div class="login_wrap wrap">
+  <div class="wrap">
       <headTop head-title="登录"></headTop>
       <div class="login_wrap">
           <form>
@@ -23,6 +23,8 @@
 </template>
 <script>
 import headTop from '../../components/head'
+import axios from 'axios'
+
 export default {
   name:'login',
   data(){
@@ -42,12 +44,11 @@ export default {
          }
       },
       check(){
-          this.$store.state.userinfo = {
-              username:this.username,
-              userpass:this.userpass,
-              userphone:'no cellphone',
-          }
-          this.$store.state.codenum = this.codenum
+          axios.get('/user').then(res=>{
+            this.$store.state.userinfo = res.data;
+
+          })
+
           this.$store.state.isLogin = true;
           this.$router.push('/profile')
       }
@@ -59,6 +60,7 @@ export default {
 </script>
 <style lang="scss" scoped>
     .login_wrap {
+        padding-top: 40px;
         section {
             border-bottom: 1px solid #e8e8e8;
         }
@@ -89,6 +91,7 @@ export default {
                 background: #4cd964;
                 color: white;
                 font-size: 14px;
+                border-radius: 5px;
             }
         }
     }
