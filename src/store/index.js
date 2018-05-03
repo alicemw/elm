@@ -6,7 +6,9 @@ const state = {
     userinfo:{
         username:'login/register',
         userphone:'no cellphone',
-        useravatar:null
+        useravatar:null,
+        realname:null,
+        address:[]
     },
     isLogin:false,
     codenum:null

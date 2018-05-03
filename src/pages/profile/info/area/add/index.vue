@@ -14,7 +14,7 @@
         <section>
             <input type="text" v-model="phone" placeholder="联系电话" class="phone">
         </section>
-        <button>新增地址</button>
+        <button @click="checkdata">新增地址</button>
     </div>
   </div>
 </template>
@@ -29,11 +29,47 @@ export default {
           name:null,
           street:null,
           detailaddress:null,
-          phone:null
+          phone:null,
+          ischecked:false
       }
   },
   components:{
     headTop
+  },
+  methods:{
+      addarea(){
+          if(this.ischecked){
+              axios.post('/user/address/',{
+                  address:this.street +''+this.detailaddress,
+                  phone:this.phone,
+                  realname:this.name
+              }).then((res)=>{
+                  if(res.data.info == 'success'){
+                      (this.$store.state.userinfo.address).push(this.street +''+this.detailaddress);
+                      this.$store.state.userinfo.userphone =this.phone;
+                      this.$router.push('/profile/info/areainfo')
+                  }else{
+                      alert('未知故障！')
+                  }
+              })
+          }else{
+              alert('请全部填好！')
+          }
+      },
+      checkdata(){
+         let arr = Array.from(Object.keys(this.$data))
+         let b = arr.filter((item,index)=>{
+             return !this.$data[item];
+         })
+         if(b.length>1){
+             alert('请全部填好')
+         }else if(b.length ==1){
+             this.ischecked = true;
+             this.addarea()
+         }else{
+             alert('未知故障！')
+         }
+      }
   },
   computed:mapState([
       'userinfo',

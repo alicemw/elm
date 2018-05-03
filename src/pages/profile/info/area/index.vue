@@ -3,6 +3,11 @@
     <headTop head-title="编辑地址"></headTop>
     <div class="address_wrap">
       <router-link class="addaddress" to='/profile/info/areainfo/add'>添加地址</router-link>
+      <ul v-show="address.length > 0">
+        <li v-for="(item,index) in address" :key=index>
+          {{item}}
+        </li>
+      </ul>
     </div>
     <transition name="slide" mode="out-in">
         <router-view></router-view>
@@ -14,8 +19,21 @@ import axios from 'axios'
 import headTop from '../../../../components/head'
 export default {
   name:'areainfo',
+  data(){
+    return {
+      
+    }
+  },
   components:{
     headTop
+  },
+  mounted(){
+    
+  },
+  computed:{
+    address(){
+      return this.$store.state.userinfo.address
+    }
   }
 }
 </script>
