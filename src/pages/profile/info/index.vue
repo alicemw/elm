@@ -28,6 +28,14 @@
             <p class="bphone">手机</p>
             
         </router-link>
+        <div class="canclick disable">
+            安全设置
+        </div>
+        <router-link class="canclick" to="/profile/info/forget">
+            <p class="passrevise">登陆密码 <span>修改</span></p>
+            
+        </router-link>
+        <button @click="loginout">退出登录</button>
       </div>
       
       <transition name="slide" mode="out-in">
@@ -57,6 +65,11 @@ export default {
           .then(response=>{
             console.log(response.data);
           })        
+    },
+    loginout(){
+        this.$store.state.userinfo = null;
+        this.$store.state.isLogin = false;
+        this.$router.push('/')
     }    
   },
   computed:{
@@ -89,13 +102,13 @@ export default {
         padding: 5px 10px;
         position: relative;
         height: 50px;
-        line-height:50px;
+        line-height:40px;
         color: black;
         justify-content: space-between;
         border-bottom: 1px solid #e8e8e8;
         text-align:left;
         &.disable {
-            background: #ccc;
+            background:#f5f5f5;
             &::after {
                 content: ''
             }
@@ -143,7 +156,36 @@ export default {
             }
         }
     }
-
+    button {
+            width: 90%;
+            height: 40px;
+            margin: 20px auto 0;
+            background: #4cd964;
+            border: none;
+            line-height: 40px;
+            color: white;
+            opacity: 0.9;
+            border-radius: 5px;
+            &:active {
+                border: none;
+                outline: none;
+                opacity: 1;
+            }
+            &:focus {
+                border: none;
+                outline: none;
+            }
+        }
+    .passrevise {
+        width: 100%;
+        position: relative;
+        span {
+            text-align: right;
+            position: absolute;
+            top: 0;
+            right: 20px;
+        }
+    }
     .slide-enter-active,.slide-leave-active {
         transition: all .4s;
     }

@@ -3,13 +3,7 @@ import vuex from 'vuex'
 
 vue.use(vuex)
 const state = {
-    userinfo:{
-        username:'login/register',
-        userphone:'no cellphone',
-        useravatar:null,
-        realname:null,
-        address:[]
-    },
+    userinfo:null,
     isLogin:false,
     codenum:null
 }

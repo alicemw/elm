@@ -24,6 +24,7 @@ Mock.mock('/user','get',{
     username: Random.cname(), // Random.cname() 随机生成一个常见的中文姓名
     userphone:'1823223423',//生成邮箱
     address:[],//地址空数组
+    realname:Random.cname(),//真实姓名
     date: Random.date() + ' ' + Random.time() // Random.date()指示生成的日期字符串的格式,默认为yyyy-MM-dd；Random.time() 返回一个随机的时间字符串
 })
 Mock.mock('/user/setname','post',{
@@ -32,3 +33,12 @@ Mock.mock('/user/setname','post',{
 Mock.mock('/user/address/','post',{
     info:'success'
 })
+Mock.mock('/user/forget/vertify','get',function(){//这里是函数每次回重新生成数据， 这里是数据则不会重新生成数据
+    const codenum = Mock.mock({'regexp': /\w{4}/}).regexp;
+    return Mock.mock({
+        vertifyimg:Random.dataImage('70x30',codenum),
+        codenum:codenum
+    })
+}
+    
+)

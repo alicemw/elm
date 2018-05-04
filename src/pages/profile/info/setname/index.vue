@@ -33,7 +33,7 @@ export default {
         }).then(res=>{
           if(res.data.info == 'success'){
             this.$store.state.userinfo.username = this.username
-            this.$router.push('/profile/info')
+            this.$router.go(-1)
           }
         })
       }else {

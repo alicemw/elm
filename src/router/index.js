@@ -6,6 +6,7 @@ import profile from '@/pages/profile'
 import profileInfo from '@/pages/profile/info'
 import setname from '@/pages/profile/info/setname'
 import areainfo from '@/pages/profile/info/area'
+import forget from '@/pages/profile/info/forget'
 import add from '@/pages/profile/info/area/add'
 import login from '@/pages/login'
 
@@ -48,6 +49,12 @@ const router =  new Router({
                   meta:{requiresAuth:true}
                 }
               ]
+            },{
+              path:'forget',
+              name:'forget',
+              component:forget,
+              meta:{requiresAuth:true}
+             
             }
           ]
           

@@ -9,9 +9,13 @@
             <div class="avatar" v-else>
                 <div class="avatar_info"></div>
             </div>
-            <div class="userphone">
+            <div class="userphone" v-if="!!userinfo">
                 <div class="username">{{userinfo.username}}</div>
                 <div class="usercall">{{userinfo.userphone}}</div>
+            </div>
+            <div class="userphone" v-else>
+                <div class="username">login/register</div>
+                <div class="usercall">no cellphone</div>
             </div>
             <div class="usergo">
                 ＞
