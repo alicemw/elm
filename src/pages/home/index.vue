@@ -2,9 +2,10 @@
     <div class="wrap">
         <headTop signUp="home" head-title="首页"></headTop>
         <div class="home_wrap">
-            <p @click='test'>{{message}}</p>
+            <p @click="alert">{{message}}</p>
         </div>
-        <alert :alertShow="flag" :alertMessage="alertmessage" @test1="hehehe" ></alert>
+        <!-- 取个名字方便调用方法 -->
+        <alert  ref="alert" ></alert>
     </div>
 </template>
 <script>
@@ -20,12 +21,9 @@ export default {
       }
   },
   methods:{
-      test(){
-          if(this.flag == true){
-              this.flag = false
-          }else {
-              this.flag = true
-          }
+      alert(){
+        
+         this.$refs.alert.show('hello')
       },
       hehehe(){
           this.flag = false;

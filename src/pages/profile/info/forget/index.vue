@@ -25,10 +25,12 @@
             <button @click="submitrevise">确认修改</button>
 
         </div>
+        <alert ref="alert"></alert>
     </div>
 </template>
 <script>
 import headTop from '../../../../components/head'
+import alert from '../../../../components/alert'
 import axios from 'axios';
 export default {
   name:'forget',
@@ -53,22 +55,21 @@ export default {
       datacheck(){
           const arr = Array.from(Object.keys(this.$data))
           arr.pop();
-          
          const b =  arr.filter((item,index)=>{
               return !this.$data[item]
           })
-         if(b.length>0){
-             alert('请填写完整')
-             return false;
+         if(b.length>0){   
+            this.$refs.alert.show('请输入完整！')
+            return false;
          }
          if(this.newpass1 != this.newpass2){
              this.newpass1 =this.newpass2 = null;
-             alert('两次密码不同，请重新输入')
-             return false;
+              this.$refs.alert.show('两次密码不同，请重新输入！')
+            return false;
          }
          if(this.codenum != this.$store.state.codenum){
              this.codenum =null;
-             alert('验证码错误！')
+             this.$refs.alert.show('验证码错误！')
              return false;
          }
         this.isChecked = true;
@@ -77,13 +78,14 @@ export default {
       submitrevise(){
           this.datacheck()
           if(this.isChecked){
-              alert('修改成功！')
-              this.$router.go(-1)
+               this.$refs.alert.show('修改成功!','success');
+               
           }
       }
   },
   components:{
-      headTop
+      headTop,
+      alert
   },
   mounted(){
       this.getvertify()
