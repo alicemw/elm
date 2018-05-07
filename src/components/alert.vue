@@ -24,7 +24,7 @@ export default {
               this.$router.go(-1)
           }
       },
-      show(info,callback){
+      show(info,callback){//显示的信息和 是否需要跳转
           this.alertMessage =info;
           this.alertShow =true;
           if(callback){
@@ -66,7 +66,7 @@ export default {
             transform: scale(0)
         }
         50% {
-            transform: scale(1.3)
+            transform: scale(1.2)
         }
         100% {
             transform: scale(1)

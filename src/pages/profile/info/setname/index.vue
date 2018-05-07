@@ -32,7 +32,7 @@ export default {
           username:this.username
         }).then(res=>{
           if(res.data.info == 'success'){
-            this.$store.state.userinfo.username = this.username
+            this.$store.commit('setProfile',{'username':this.username})
             this.$router.go(-1)
           }
         })

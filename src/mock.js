@@ -22,9 +22,10 @@ const produceNewsData = function() {
 Mock.mock('/user','get',{
     useravatar: Random.dataImage('300x300', 'mock的图片'), // Random.dataImage( size, text ) 生成一段随机的 Base64 图片编码
     username: Random.cname(), // Random.cname() 随机生成一个常见的中文姓名
-    userphone:'1823223423',//生成邮箱
+    userphone:/^[1]{1}[0-9]{10}$/,//生成电话
     address:[],//地址空数组
     realname:Random.cname(),//真实姓名
+    balance:/^[1-9]{1}[0-9]{1}$/,//余额
     date: Random.date() + ' ' + Random.time() // Random.date()指示生成的日期字符串的格式,默认为yyyy-MM-dd；Random.time() 返回一个随机的时间字符串
 })
 Mock.mock('/user/setname','post',{

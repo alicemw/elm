@@ -22,11 +22,13 @@
               </section>
           </form>
       </div>
+      <alert ref="alert"></alert>
   </div>
 </template>
 <script>
 import headTop from '../../components/head'
 import axios from 'axios'
+import alert from '../../components/alert'
 
 export default {
   name:'login',
@@ -48,23 +50,27 @@ export default {
          }
       },
       check(){
+          /* if(this.codenum != this.$store.state.codenum){
+              this.$refs.alert.show('验证码错误')
+              return false;
+          } */
           axios.get('/user').then(res=>{
-            this.$store.state.userinfo = res.data;
-
+            this.$store.commit('setUser',res.data)
+            this.$store.commit('isLogin',true)
           })
-
-          this.$store.state.isLogin = true;
           this.$router.push('/profile')
       },
       getvertify(){
           axios.get('/user/forget/vertify').then(res=>{
               this.codeimg = res.data.vertifyimg
-              this.$store.state.codenum = res.data.codenum;
+              this.$store.commit('setCodeNum',res.data.codenum)
+             
           })
       }
   },
   components:{
-      headTop
+      headTop,
+      alert
   },
   mounted(){
       this.getvertify()

@@ -22,6 +22,7 @@
 import axios from 'axios'
 import {mapState} from 'vuex'
 import headTop from '../../../../../components/head'
+import alert from '../../../../../components/alert'
 export default {
   name:'add',
   data(){
@@ -34,7 +35,8 @@ export default {
       }
   },
   components:{
-    headTop
+    headTop,
+    alert
   },
   methods:{
       addarea(){
@@ -45,11 +47,18 @@ export default {
                   realname:this.name
               }).then((res)=>{
                   if(res.data.info == 'success'){
-                      this.$store.state.userinfo.address.unshift({
+                      /* this.$store.state.userinfo.address.unshift({
                           name:this.name,
                           ad:this.street +''+this.detailaddress,
                           phone:this.phone
-                      });
+                      }); */
+                      this.$store.commit('setProfile',{
+                          address:{
+                               name:this.name,
+                                ad:this.street +''+this.detailaddress,
+                                phone:this.phone
+                          }
+                      })
                       //像父组件传值说明提交已成功！
                       this.$emit('test');
                       this.$router.go(-1);

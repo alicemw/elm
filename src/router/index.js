@@ -7,6 +7,7 @@ import profileInfo from '@/pages/profile/info'
 import setname from '@/pages/profile/info/setname'
 import areainfo from '@/pages/profile/info/area'
 import forget from '@/pages/profile/info/forget'
+import balance from '@/pages/balance'
 import add from '@/pages/profile/info/area/add'
 import login from '@/pages/login'
 
@@ -60,6 +61,14 @@ const router =  new Router({
           
         }
       ]
+    },
+    {
+      path:'/balance',
+      name:'balance',
+      meta:{
+        requiresAuth:true
+      },
+      component:balance
     },
     {
       path:'/login',

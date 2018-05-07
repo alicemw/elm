@@ -49,7 +49,7 @@ export default {
       getvertify(){
           axios.get('/user/forget/vertify').then(res=>{
               this.codeimg = res.data.vertifyimg
-              this.$store.state.codenum = res.data.codenum;
+              this.$store.commit('setCodeNum',res.data.codenum)
           })
       },
       datacheck(){

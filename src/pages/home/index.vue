@@ -5,7 +5,7 @@
             <p @click="alert">{{message}}</p>
         </div>
         <!-- 取个名字方便调用方法 -->
-        <alert  ref="alert" ></alert>
+        <alert  ref="alert" @test="callback" ></alert>
     </div>
 </template>
 <script>
@@ -27,7 +27,8 @@ export default {
       },
       hehehe(){
           this.flag = false;
-      }
+      },
+      callback(){}
   },
   components:{
       headTop,
