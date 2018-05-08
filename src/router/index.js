@@ -8,6 +8,14 @@ import setname from '@/pages/profile/info/setname'
 import areainfo from '@/pages/profile/info/area'
 import forget from '@/pages/profile/info/forget'
 import balance from '@/pages/balance'
+import balanceintro from '@/pages/balance/intro'
+import benefit from '@/pages/benefit'
+import download from '@/pages/download'
+import benefitintro from '@/pages/benefit/intro'
+import exchange from '@/pages/benefit/exchange'
+import djqintro from '@/pages/benefit/djqintro'
+import commend from '@/pages/benefit/commend'
+import history from '@/pages/benefit/history'
 import add from '@/pages/profile/info/area/add'
 import login from '@/pages/login'
 
@@ -68,7 +76,70 @@ const router =  new Router({
       meta:{
         requiresAuth:true
       },
-      component:balance
+      component:balance,
+      children:[{
+        name:'balanceintro',
+        path:'intro',
+        component:balanceintro,
+        meta:{
+          requiresAuth:true
+        }
+      }]
+    },
+    {
+      path:'/benefit',
+      name:'benefit',
+      component:benefit,
+      meta:{
+        requiresAuth:true
+      },
+      children:[
+        {
+          path:'intro',
+          name:'benefitintro',
+          component:benefitintro,
+          meta:{
+            requiresAuth:true
+          }
+        },
+        {
+          path:'djqintro',
+          name:'djqintro',
+          component:djqintro,
+          meta:{
+            requiresAuth:true
+          }
+        },
+        {
+          path:'exchange',
+          name:'exchange',
+          component:exchange,
+          meta:{
+            requiresAuth:true
+          }
+        },
+        {
+          path:'history',
+          name:'history',
+          component:history,
+          meta:{
+            requiresAuth:true
+          }
+        },
+        {
+          path:'commend',
+          name:'commend',
+          component:commend,
+          meta:{
+            requiresAuth:true
+          }
+        }
+      ]
+    },
+    {
+      path:'/download',
+      name:'download',
+      component:download
     },
     {
       path:'/login',

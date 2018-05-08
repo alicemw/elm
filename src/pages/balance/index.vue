@@ -3,17 +3,22 @@
       <div class="balance_wrap">
           <section class="num">
               <section class="num_in">
-                  <header>当前余额 <router-link to="/balance/info">余额说明</router-link></header>
+                  <header>当前余额 <router-link to="/balance/intro">余额说明</router-link></header>
                   <p class="cur_num"><b>{{balance.length>3 ? balance : Number(balance).toFixed(2) }}</b>元</p>
                   <button class="tixian" :class="{isEmpty:isEmpty}" @click="tixian">提现</button>
               </section>
           </section>
       </div>
       <headTop head-title="我的余额"></headTop>
+      <alert ref="alert"></alert>
+       <transition name="slide" mode="out-in">
+          <router-view></router-view>
+      </transition>
   </div>
 </template>
 <script>
 import headTop from './../../components/head'
+import alert from './../../components/alert'
 export default {
   name:'balance',
   data(){
@@ -22,11 +27,12 @@ export default {
   },
   methods:{
       tixian(){
-
+          this.$refs.alert.show('取不了')
       }
   },
   components:{
-      headTop
+      headTop,
+      alert
   },
   computed:{
       isEmpty(){
@@ -102,5 +108,12 @@ export default {
     .isEmpty {
         background: #ccc;
     }
+}
+.slide-enter-active,.slide-leave-active {
+        transition: all .4s;
+    }
+.slide-enter,.slide-leave-active {
+    transform: translateX(50px);
+    opacity: 0;
 }
 </style>

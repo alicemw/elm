@@ -29,11 +29,13 @@
                 <span>我的余额</span>
             </router-link>
             <router-link to="/benefit" class="benefit">
-                <p><b>{{money.benefit}}</b>个</p>
+                <p v-if="userinfo && userinfo.benefit"><b>{{userinfo.benefit.toLocaleString()}}</b>个</p>
+                <p v-else><b>0</b>个</p>
                 <span>我的优惠</span>
             </router-link>
             <router-link to="/jifen" class="jifen">
-                <p><b>{{money.jifen}}</b>分</p>
+                <p v-if="userinfo && userinfo.jifen"><b>{{userinfo.jifen.toLocaleString()}}</b>分</p>
+                <p v-else><b>0</b>分</p>
                 <span>我的积分</span>
             </router-link>
         </div>

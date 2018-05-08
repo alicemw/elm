@@ -20,12 +20,15 @@ const produceNewsData = function() {
     }
 }
 Mock.mock('/user','get',{
+    userid:/^[1-9]{0,1}[0-9]{2}$/,//用户id
     useravatar: Random.dataImage('300x300', 'mock的图片'), // Random.dataImage( size, text ) 生成一段随机的 Base64 图片编码
     username: Random.cname(), // Random.cname() 随机生成一个常见的中文姓名
     userphone:/^[1]{1}[0-9]{10}$/,//生成电话
     address:[],//地址空数组
     realname:Random.cname(),//真实姓名
     balance:/^[1-9]{1}[0-9]{1}$/,//余额
+    benefit:/^[1-9]{0,1}[0-9]{1}$/,//优惠
+    jifen:/^[1-9]{0,1}[0-9]{0,3}$/,//积分
     date: Random.date() + ' ' + Random.time() // Random.date()指示生成的日期字符串的格式,默认为yyyy-MM-dd；Random.time() 返回一个随机的时间字符串
 })
 Mock.mock('/user/setname','post',{
@@ -40,6 +43,27 @@ Mock.mock('/user/forget/vertify','get',function(){//这里是函数每次回重�
         vertifyimg:Random.dataImage('70x30',codenum),
         codenum:codenum
     })
-}
-    
-)
+})
+Mock.mock('/user/hongbao','get',{
+    'hongbaolist|3-5':[
+        {
+            hong_num:/^[1-9]{1}$/, //红包金额
+            expire:'2018-05-10',//过期日期
+            need_num:/^[1-9]{1}[0]{1}$/, //满多少可用
+            hong_type:['蔬菜','水果','日用品'] //限制类型
+        }
+    ]
+})
+Mock.mock('/benefit','post',{
+    info:'success'
+})
+Mock.mock('/benefit/history?userid=10','get',{
+    'hongbaolist|8-10':[
+        {
+            hong_num:/^[1-9]{1}$/, //红包金额
+            expire:'2018-05-05',//过期日期
+            need_num:/^[1-9]{1}[0]{1}$/, //满多少可用
+            hong_type:['蔬菜','水果','日用品'] //限制类型
+        }
+    ] 
+})
