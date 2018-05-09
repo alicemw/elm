@@ -40,19 +40,19 @@
             </router-link>
         </div>
         <ul class="navlist">
-            <li><router-link to="order">我的订单</router-link></li>
-            <li><router-link to="order">积分商城</router-link></li>
-            <li><router-link to="order">饿了么会员卡</router-link></li>
+            <li><router-link to="/order">我的订单</router-link></li>
+            <li><router-link to="/order">积分商城</router-link></li>
+            <li><router-link to="/vipcard">饿了么会员卡</router-link></li>
 
         </ul>
         <ul class="navlist">
-            <li><router-link to="order">服务中心</router-link></li>
-            <li><router-link to="order">下载饿了么app</router-link></li>
+            <li><router-link to="/order">服务中心</router-link></li>
+            <li><router-link to="/order">下载饿了么app</router-link></li>
 
         </ul>
       </div>
       <headTop head-title="我的"></headTop>
-      
+      <foot></foot>
       <transition name="slide" mode="out-in">
           <router-view></router-view>
       </transition>
@@ -60,6 +60,7 @@
 </template>
 <script>
 import headTop from '../../components/head'
+import foot from '../../components/footer'
 import {mapState} from 'vuex'
 export default {
   name:'profile',
@@ -72,7 +73,8 @@ export default {
       }
   },
   components:{
-      headTop
+      headTop,
+      foot
   },
   computed:mapState([
       'userinfo',
@@ -82,8 +84,9 @@ export default {
 </script>
 <style lang="scss" scoped>
     .profile_wrap {
-        padding-top: 40px;
+        padding: 40px 0;
         height: 100%;
+        overflow: auto;
         background: #f5f5f5;
     }
     .user_info {
@@ -175,7 +178,7 @@ export default {
                 width: 15px;
                 height: 15px;
                 background: skyblue;
-                left: -25px;
+                left: -20px;
                 top: 50%;
                 transform: translateY(-50%);
                 content: '';

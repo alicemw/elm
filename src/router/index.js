@@ -8,9 +8,16 @@ import setname from '@/pages/profile/info/setname'
 import areainfo from '@/pages/profile/info/area'
 import forget from '@/pages/profile/info/forget'
 import balance from '@/pages/balance'
+import order from '@/pages/order'
+import vipcard from '@/pages/vipcard'
+import cardintro from '@/pages/vipcard/cardintro'
+import usecard from '@/pages/vipcard/usecard'
+import cardcord from '@/pages/vipcard/cardcord'
 import balanceintro from '@/pages/balance/intro'
 import benefit from '@/pages/benefit'
 import download from '@/pages/download'
+import jifen from '@/pages/jifen'
+import jfintro from '@/pages/jifen/intro'
 import benefitintro from '@/pages/benefit/intro'
 import exchange from '@/pages/benefit/exchange'
 import djqintro from '@/pages/benefit/djqintro'
@@ -24,11 +31,13 @@ Vue.use(Router)
 const router =  new Router({
   mode:'history',
   routes: [
+    //主页
     {
       path: '/',
       name: 'home',
       component: Home
     },
+    //个人信息列表
     {
       path:'/profile',
       name:'profile',
@@ -70,6 +79,51 @@ const router =  new Router({
         }
       ]
     },
+    //订单列表
+    {
+      path:'/order',
+      name:'order',
+      component:order,
+      meta:{
+        requiresAuth:true
+      }
+    },
+    // 会员中心
+    {
+      path:'/vipcard',
+      name:'vipcard',
+      component:vipcard,
+      meta:{
+        requiresAuth:true
+      },
+      children:[
+        {
+          path:'intro',
+          name:'cardintro',
+          component:cardintro,
+          meta:{
+            requiresAuth:true
+          }
+        },
+        {
+          path:'usecard',
+          name:'usecard',
+          component:usecard,
+          meta:{
+            requiresAuth:true
+          }
+        },
+        {
+          path:'cardcord',
+          name:'cardcord',
+          component:cardcord,
+          meta:{
+            requiresAuth:true
+          }
+        }
+      ]
+    },
+    //我的余额
     {
       path:'/balance',
       name:'balance',
@@ -86,6 +140,7 @@ const router =  new Router({
         }
       }]
     },
+    //我的优惠
     {
       path:'/benefit',
       name:'benefit',
@@ -136,11 +191,29 @@ const router =  new Router({
         }
       ]
     },
+    //我的积分
+    {
+      path:'/jifen',
+      name:'jifen',
+      component:jifen,
+      meta:{
+        requiresAuth:true
+      },
+      children:[
+        {
+          path:'intro',
+          name:'jfintro',
+          component:jfintro
+        }
+      ]
+    },
+    //下载饿了么
     {
       path:'/download',
       name:'download',
       component:download
     },
+    //登陆
     {
       path:'/login',
       name:'login',

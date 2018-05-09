@@ -23,10 +23,12 @@
           </form>
       </div>
       <alert ref="alert"></alert>
+      <loading ref="loading"></loading>
   </div>
 </template>
 <script>
 import headTop from '../../components/head'
+import loading from '../../components/loading'
 import axios from 'axios'
 import alert from '../../components/alert'
 
@@ -54,11 +56,14 @@ export default {
               this.$refs.alert.show('验证码错误')
               return false;
           } */
+          this.$refs.loading.show();
           axios.get('/user').then(res=>{
             this.$store.commit('setUser',res.data)
             this.$store.commit('isLogin',true)
+            this.$refs.loading.hide();
+            this.$router.push('/profile')
           })
-          this.$router.push('/profile')
+          
       },
       getvertify(){
           axios.get('/user/forget/vertify').then(res=>{
@@ -70,7 +75,8 @@ export default {
   },
   components:{
       headTop,
-      alert
+      alert,
+      loading
   },
   mounted(){
       this.getvertify()

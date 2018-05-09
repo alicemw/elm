@@ -2,6 +2,10 @@
 import Mock from 'mockjs'
 //创建Random对象
 const Random = Mock.Random;
+//配延时更逼真，全局配置应用所有请求，比较坑
+Mock.setup({
+    timeout:'200-1000'
+})
 //mock一组数据
 const produceNewsData = function() {
     let articles = [];
@@ -66,4 +70,30 @@ Mock.mock('/benefit/history?userid=10','get',{
             hong_type:['蔬菜','水果','日用品'] //限制类型
         }
     ] 
+})
+var orderlist = ()=>{
+    let arr =[]
+    for(let i=0;i<10;++i){
+        arr.push(
+            Mock.mock({
+                'pay_num|1-100':1,
+                'store_img|1':Random.dataImage('50x50','abcd'),
+                'store_name|1':Random.cname()+'店'
+            })
+        )
+    }
+    return arr
+}
+Mock.mock('/order?userid=10','get',orderlist)
+Mock.mock('/excard','post',{
+    info:'success'
+})
+Mock.mock('/card/cardcord?userid=10&currentPage=1','get',{
+    'paylist|10':[
+        {
+            pay_num:/^[1-9]{1}[0]{1}$/, //支付金额
+            date:'2018-05-10',//购买日期
+            viptype:'季卡'//卡类型
+        }
+    ]
 })

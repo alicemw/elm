@@ -39,12 +39,12 @@ export default {
     .headtop {
         z-index: 4;
         box-sizing: border-box;
-        height: 40px;
+        height: 41px;
         position: absolute;
         width: 100%;
         top: 0;
         left: 0;
-        line-height: 40px;
+        line-height: 41px;
         background: #3190e8;
         color: white;
         font-weight: bold;
@@ -54,7 +54,7 @@ export default {
     }
     .back {
         width: 20px;
-        height: 40px;
+        height: 41px;
         top: 12px;
         left: 10px;
         position: absolute;

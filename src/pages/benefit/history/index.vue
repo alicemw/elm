@@ -48,9 +48,9 @@ export default {
   },
   mounted(){
       axios.get('/benefit/history',{
-          params:{
-              userid:10
-          }
+        params:{
+            userid:10
+        }
       }).then(res=>{
           this.hbData =res.data.hongbaolist;
       })
