@@ -25,13 +25,11 @@
   </div>
 </template>
 <script>
-import headTop from '../../../components/head'
+
 
 export default {
     name:'cardintro',
-    components:{
-        headTop
-    }
+   
 }
 </script>
 <style lang="scss" scoped>

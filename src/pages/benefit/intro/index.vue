@@ -25,12 +25,11 @@
   </div>
 </template>
 <script>
-import headTop from '../../../components/head'
 
 export default {
     name:'intro',
     components:{
-        headTop
+        
     }
 }
 </script>

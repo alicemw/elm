@@ -1,5 +1,5 @@
 <template>
-  <div id="footer">
+  <div id="foot">
       <router-link to="/msite">外卖</router-link>
       <router-link to="/search">搜索</router-link>
       <router-link to="/order">订单</router-link>
@@ -12,7 +12,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-#footer {
+#foot {
     position: fixed;
     bottom: 0;
     left: 0;

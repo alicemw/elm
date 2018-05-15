@@ -18,8 +18,7 @@
 </template>
 
 <script>
-import headTop from '../../../components/head'
-import loading from '../../../components/loading'
+
 import axios from 'axios'
 import BScroll from 'better-scroll'
 export default {
@@ -46,8 +45,7 @@ export default {
     
  },
  components:{
-     headTop,
-     loading,
+     
      myscroll:null
  },
  methods:{

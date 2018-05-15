@@ -27,10 +27,8 @@
   </div>
 </template>
 <script>
-import headTop from '../../components/head'
-import loading from '../../components/loading'
+
 import axios from 'axios'
-import alert from '../../components/alert'
 
 export default {
   name:'login',
@@ -74,9 +72,7 @@ export default {
       }
   },
   components:{
-      headTop,
-      alert,
-      loading
+      
   },
   mounted(){
       this.getvertify()

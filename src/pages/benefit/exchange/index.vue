@@ -16,8 +16,6 @@
   </div>
 </template>
 <script>
-import headTop from './../../../components/head'
-import alert from './../../../components/alert'
 import axios from 'axios'
 export default {
   name:'exchange',
@@ -66,8 +64,7 @@ export default {
     }
   },
   components:{
-      headTop,
-      alert
+      
   }
 }
 </script>

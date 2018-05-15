@@ -21,8 +21,7 @@
 <script>
 import axios from 'axios'
 import {mapState} from 'vuex'
-import headTop from '../../../../../components/head'
-import alert from '../../../../../components/alert'
+
 export default {
   name:'add',
   data(){
@@ -35,8 +34,7 @@ export default {
       }
   },
   components:{
-    headTop,
-    alert
+    
   },
   methods:{
       addarea(){

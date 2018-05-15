@@ -25,7 +25,6 @@
   </div>
 </template>
 <script>
-import headTop from './../../../components/head'
 import axios from 'axios'
 import Bscroll from 'better-scroll'
 export default {
@@ -36,7 +35,7 @@ export default {
       }
   },
   components:{
-      headTop
+      
   },
   methods:{
       expiredate(x){

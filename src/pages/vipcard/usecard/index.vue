@@ -23,9 +23,7 @@
 </template>
 
 <script>
-import headTop from '../../../components/head'
-import alert from '../../../components/alert'
-import loading from '../../../components/loading'
+
 import axios from 'axios'
 export default {
  name:'usecard',
@@ -37,11 +35,7 @@ export default {
  },
  mounted () {
  },
- components:{
-     headTop,
-     alert,
-     loading
- },
+
  methods:{
      excard(){
          if(this.isChecked){

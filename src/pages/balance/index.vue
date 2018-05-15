@@ -17,8 +17,7 @@
   </div>
 </template>
 <script>
-import headTop from './../../components/head'
-import alert from './../../components/alert'
+
 export default {
   name:'balance',
   data(){
@@ -31,8 +30,7 @@ export default {
       }
   },
   components:{
-      headTop,
-      alert
+      
   },
   computed:{
       isEmpty(){

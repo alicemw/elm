@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import headTop from '../../components/head'
+
 export default {
  name:'vipcard',
  mounted () {
@@ -64,9 +64,7 @@ export default {
          cardnum:20
      }
  },
- components:{
-     headTop
- },
+
  computed:{
      username(){
          return this.$store.state.userinfo.username;

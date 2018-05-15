@@ -29,8 +29,7 @@
     </div>
 </template>
 <script>
-import headTop from '../../../../components/head'
-import alert from '../../../../components/alert'
+
 import axios from 'axios';
 export default {
   name:'forget',
@@ -84,8 +83,7 @@ export default {
       }
   },
   components:{
-      headTop,
-      alert
+     
   },
   mounted(){
       this.getvertify()

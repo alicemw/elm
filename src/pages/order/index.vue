@@ -19,8 +19,6 @@
   </div>
 </template>
 <script>
-import headTop from '../../components/head'
-import loading from '../../components/loading'
 import axios from 'axios'
 export default {
   name:'order',
@@ -30,8 +28,7 @@ export default {
       }
   },
   components:{
-      headTop,
-      loading
+     
   },
   methods:{
       loadshow(){

@@ -11,7 +11,7 @@
 </template>
 <script>
 import axios from 'axios'
-import headTop from '../../../../components/head'
+
 export default {
   name:'setname',
   data(){
@@ -23,7 +23,7 @@ export default {
     }
   },
   components:{
-    headTop
+    
   },
   methods:{
     changename(){

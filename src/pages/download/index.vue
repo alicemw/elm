@@ -9,7 +9,7 @@
   </div>
 </template>
 <script>
-import headTop from '../../components/head'
+
 
 export default {
   name:'download',
@@ -19,7 +19,7 @@ export default {
       }
   },
   components:{
-      headTop
+      
   }
 }
 </script>

@@ -6,11 +6,12 @@
         </div>
         <!-- 取个名字方便调用方法 -->
         <alert  ref="alert" @test="callback" ></alert>
+        <foot></foot>
+        <loading ref="loading"></loading>
     </div>
 </template>
 <script>
-import headTop from '../../components/head';
-import alert from '../../components/alert';
+
 export default {
   name:'Home',
   data(){
@@ -29,10 +30,6 @@ export default {
           this.flag = false;
       },
       callback(){}
-  },
-  components:{
-      headTop,
-      alert
   }
 }
 </script>

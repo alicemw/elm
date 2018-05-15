@@ -59,8 +59,6 @@
   </div>
 </template>
 <script>
-import headTop from '../../components/head'
-import foot from '../../components/footer'
 import {mapState} from 'vuex'
 export default {
   name:'profile',
@@ -73,8 +71,7 @@ export default {
       }
   },
   components:{
-      headTop,
-      foot
+
   },
   computed:mapState([
       'userinfo',

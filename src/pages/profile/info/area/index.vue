@@ -18,7 +18,7 @@
 </template>
 <script>
 import axios from 'axios'
-import headTop from '../../../../components/head'
+
 export default {
   name:'areainfo',
   data(){
@@ -27,7 +27,7 @@ export default {
     }
   },
   components:{
-    headTop
+  
   },
   mounted(){
     

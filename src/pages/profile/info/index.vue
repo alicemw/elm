@@ -45,11 +45,11 @@
   </div>
 </template>
 <script>
-import headTop from '../../../components/head'
+
 export default {
   name:'profileInfo',
   components:{
-      headTop
+    
   },
   methods:{
     getAvatar(e){
