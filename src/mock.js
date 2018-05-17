@@ -76,6 +76,7 @@ var orderlist = ()=>{
     for(let i=0;i<10;++i){
         arr.push(
             Mock.mock({
+                'id':i,
                 'pay_num|1-100':1,
                 'store_img|1':Random.dataImage('50x50','abcd'),
                 'store_name|1':Random.cname()+'店'

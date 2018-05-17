@@ -5,7 +5,8 @@ vue.use(vuex)
 const state = {
     userinfo:null,
     isLogin:false,
-    codenum:null
+    codenum:null,
+    citylist:null
 }
 const mutations = {
     setUser(state,params){
@@ -28,6 +29,9 @@ const mutations = {
     },
     setCodeNum(state,params){
         state.codenum = params
+    },
+    setCityList(state,params){
+        state.citylist = params
     }
 }
 const store = new vuex.Store({

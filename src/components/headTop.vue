@@ -1,11 +1,14 @@
 <template>
   <header class="headtop">
-      <span class="back" @click="back"> 
+      <span class="back logo" v-if="isHome">
+          ele.me
+      </span>
+      <span class="back" @click="back" v-else> 
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" version="1.1">
             <polyline points="12,18 4,9 12,0" style="fill:none;stroke:rgb(255,255,255);stroke-width:2"/>
         </svg>    
       </span>
-      <span class="headTitle">
+      <span class="headTitle" v-show="!isHome">
           <span>{{headTitle}}</span>
       </span>
       <span class="head_login" v-show="signUp">
@@ -31,6 +34,11 @@ export default {
 
   mounted(){
     
+  },
+  computed:{
+      isHome(){
+          return this.$route.path == '/';
+      }
   }
 
 }
@@ -58,6 +66,9 @@ export default {
         top: 12px;
         left: 10px;
         position: absolute;
+        &.logo {
+            top: 0;
+        }
     }
     .headTitle {
         position: absolute;

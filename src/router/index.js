@@ -25,6 +25,7 @@ import commend from '@/pages/benefit/commend'
 import history from '@/pages/benefit/history'
 import add from '@/pages/profile/info/area/add'
 import login from '@/pages/login'
+import city from '@/pages/city'
 
 Vue.use(Router)
 
@@ -78,6 +79,12 @@ const router =  new Router({
           
         }
       ]
+    },
+    //城市搜索列表
+    {
+      path:'/city/:id',
+      name:'city',
+      component:city
     },
     //订单列表
     {
