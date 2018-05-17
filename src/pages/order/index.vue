@@ -71,7 +71,7 @@ export default {
 .order_wrap {
     padding-top: 40px;
     height: 100%;
-    
+    overflow: auto;
     .item {
         display: block;
         height: 70px;

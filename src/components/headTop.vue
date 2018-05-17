@@ -14,13 +14,16 @@
       <span class="head_login" v-show="signUp">
           <router-link to="/profile">login</router-link>
       </span>
+       <span class="head_login" v-show="city">
+          <router-link to="/">切换城市</router-link>
+      </span>
   </header>
 </template>
 <script>
 
 export default {
   name:'headTop',
-  props:['headTitle','signUp'],
+  props:['headTitle','signUp','city'],
   methods:{
       back(){
           this.$router.go(-1)

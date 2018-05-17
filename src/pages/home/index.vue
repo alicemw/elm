@@ -8,7 +8,7 @@
                 <h4>热门城市</h4>
                 <div class="hot_container">
                     
-                    <router-link tag="span" :to='"/city/"+ item.id' v-for="(item,index) in hotcities" :key="index">
+                    <router-link tag="span" :to="`/city/${item.id}?name=${item.name}`" v-for="(item,index) in hotcities" :key="index">
                         {{item.name}}
                     </router-link>
                 </div>
@@ -19,7 +19,7 @@
                         <h4>{{index}}</h4>
                         <ul class="allcity">
                             <li class="allcityitem" v-for="(x,index) in item" :key="index">
-                                <router-link class="allcityname" tag="span" :to='"/city/" + x.id'>{{x.name}}</router-link>
+                                <router-link class="allcityname" tag="span" :to="`/city/${x.id}?name=${x.name}`">{{x.name}}</router-link>
                             </li>
                         </ul>
                     </li>
@@ -77,7 +77,7 @@ export default {
          }
       }).then(res=>{
           this.currentCity =res.data.name
-          this.cityurl = `city/${res.data.id}`
+          this.cityurl = `city/${res.data.id}?name=${res.data.name}`
       })
       //获取热门城市
       axios.get('http://cangdu.org:8001/v1/cities',{

@@ -85,6 +85,7 @@ const router =  new Router({
       path:'/city/:id',
       name:'city',
       component:city
+     
     },
     //订单列表
     {
