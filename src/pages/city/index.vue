@@ -19,7 +19,7 @@
          
          <p class="his-title" v-show="searchlist == null" >搜索历史</p>
          <div class="searchlist" v-show="searchlist==null">
-             <p v-for="(item,index) in hiscity" :key="index">
+             <p  v-for="(item,index) in hiscity" :key="index">
                  <b>{{item.name}}</b> <br />
                  {{item.address}}
              </p>
@@ -47,7 +47,7 @@ export default {
       let citylist = this.$store.state.citylist;
       this.cityname = this.$route.query.name;
       this.hiscity =this.$store.state.searchcityhis
-      console.log(this.hiscity)
+      
       
   },
   computed:{
@@ -76,7 +76,8 @@ export default {
       },
       choose(index){
           this.$store.commit('setsearchcityhis',this.searchlist[index]);
-          this.$route.push('/');
+          this.$router.push('/');
+
       }
   }
 }
