@@ -7,7 +7,8 @@ const state = {
     isLogin:false,
     codenum:null,
     citylist:null,
-    searchcityhis:[]
+    searchcityhis:[],
+    currentCity:null
 }
 const mutations = {
     setUser(state,params){
@@ -36,6 +37,9 @@ const mutations = {
     },
     setsearchcityhis(state,params){
         state.searchcityhis.push(params)
+    },
+    setCurrentCity(state,params){
+        state.currentCity = params;
     }
 }
 const store = new vuex.Store({

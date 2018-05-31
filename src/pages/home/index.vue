@@ -28,7 +28,7 @@
         </div>
         <!-- 取个名字方便调用方法 -->
         <alert  ref="alert" @test="callback" ></alert>
-        <foot></foot>
+        
         <loading ref="loading"></loading>
     </div>
 </template>

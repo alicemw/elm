@@ -26,6 +26,8 @@ import history from '@/pages/benefit/history'
 import add from '@/pages/profile/info/area/add'
 import login from '@/pages/login'
 import city from '@/pages/city'
+import msite from '@/pages/msite'
+import shop from '@/pages/shop'
 
 Vue.use(Router)
 
@@ -79,6 +81,26 @@ const router =  new Router({
           
         }
       ]
+    },
+    //外卖首页
+    {
+      path:'/msite',
+      name:'msite',
+      component:msite,
+      beforeEnter:(to,from,next)=>{
+      let position =store.state.currentCity && store.state.currentCity.address;
+      if(!!position){
+        next();
+      }else{
+        next('/');
+      }
+      }
+    },
+    //店铺
+    {
+      path:'/shop',
+      name:'shop',
+      component:shop
     },
     //城市搜索列表
     {

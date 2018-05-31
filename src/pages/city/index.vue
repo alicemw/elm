@@ -2,12 +2,12 @@
   <div class="wrap">
       <div class="city_wrap">
          <div class="search-city">
-             <input v-model="citykey" type="text" placeholder="请输入学校、商务楼、地址">
+             <input @keydown.enter="search" v-model="citykey" type="text" placeholder="请输入学校、商务楼、地址">
              <p @click="search">提交</p>
          </div>
          <div v-show="searchlist !=null">
-             <div class="searchlist" v-if="!!searchlist">
-                <p  @click="choose(index)" v-for="(item,index) in searchlist" :key="index">
+             <div class="searchlist" v-if="!!searchlist && searchlist.length">
+                <p  @click="choose(index,1)" v-for="(item,index) in searchlist" :key="index">
                     <b>{{item.name}}</b> <br />
                     {{item.address}}
                 </p>
@@ -19,9 +19,9 @@
          
          <p class="his-title" v-show="searchlist == null" >搜索历史</p>
          <div class="searchlist" v-show="searchlist==null">
-             <p  v-for="(item,index) in hiscity" :key="index">
-                 <b>{{item.name}}</b> <br />
-                 {{item.address}}
+             <p @click="choose(index,0)"  v-for="(item,index) in hiscity" :key="index">
+                <b>{{item.name}}</b> <br />
+                {{item.address}}
              </p>
          </div>
       </div>
@@ -67,6 +67,7 @@ export default {
               }).then(res=>{
                   
                   this.searchlist = res.data
+                  
            
            })
           }
@@ -74,9 +75,16 @@ export default {
       gethiscity(){
 
       },
-      choose(index){
-          this.$store.commit('setsearchcityhis',this.searchlist[index]);
-          this.$router.push('/');
+      choose(index,type){
+          if(type){
+               this.$store.commit('setsearchcityhis',this.searchlist[index]);
+               this.$store.commit('setCurrentCity',this.searchlist[index])
+               this.$router.push({path:'/msite',query:{cityinfo:this.searchlist[index]}});
+          }else{
+              this.$store.commit('setCurrentCity',this.hiscity[index])              
+              this.$router.push({path:'/msite',query:{cityinfo:this.hiscity[index]}});
+          }
+         
 
       }
   }
