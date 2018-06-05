@@ -14,7 +14,7 @@
                 <p>公告：{{shopinfo.promotion_info}}</p>
             </div>
          </div>
-         <div class="huodong" v-if="shopinfo.activities.length>0">
+         <div class="huodong" v-if="shopinfo.activities && shopinfo.activities.length>0">
              <span class="huodong-icon">{{shopinfo.activities[0].icon_name}}</span>
              <span>{{shopinfo.activities[0].description}}</span>
              <span class="huodong-num">{{shopinfo.activities.length}}个活动</span>
@@ -148,11 +148,11 @@ export default {
      }
  }
  .goods {
-    padding: 20px 15px;
     background: #fff;
     border-bottom: 1px solid #e8e8e8;
    &-nav {
      display: flex;
+     padding: 20px 15px;
      span {
          display: block;
          width: 50%;
