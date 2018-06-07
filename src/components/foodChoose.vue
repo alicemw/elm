@@ -1,13 +1,13 @@
 <template>
  <div class="food-choose">
-     <div class="left" >
-         <div class="tab-container" :style="{transform:'translateY('+tabTop+'px)'}">
-            <span ref="tab" :class="{active:isActive == index}" v-for="(item,index) in foods"  @click="tabclick(index)" :key="index">{{item.name}}</span>
+     <div class="left" ref="leftcon" >
+         <div class="tab-container" >
+            <span ref="tab"  :class="{active:isActive == index}" v-for="(item,index) in foods"  @click="tabclick(index)" :key="index">{{item.name}}</span>
          </div>
      </div>
      <div class="right">
-         <div class="food-container">
-             <div class="tab-item" v-for="(item,index) in foods" :key="index">
+         <div class="food-container"> 
+             <div class="tab-item" ref="tabitem" v-for="(item,index) in foods" :key="index">
                 <h4><b>{{item.name}}</b>  {{item.description}}</h4>
                 <div v-for="(food,key) in item.foods" :key="key" class="food-item">
                     <div v-if="food.attributes && food.attributes.length>0" class="newfood">{{food.attributes[0].icon_name.length > 1 ? food.attributes[0].icon_name :food.attributes[0].icon_name+'品' }}</div>
@@ -39,36 +39,58 @@ export default {
  data(){
      return {
          isActive:0,
-         tabTop:0
+         tabTop:0,
+         foodscroll:null,
+         mymenu:null,
      }
  },
  mounted () {
-    var mymenu = new Bscroll('.left',{
-       click:true
+         this.mymenu = new Bscroll('.left',{
+        click:true,
     })
-    var foodscroll = new Bscroll('.right',{
+        this.foodscroll = new Bscroll('.right',{
         probeType: 3,
         deceleration: 0.001,
         swipeTime: 2000,
         click:true
     })
-    console.log(mymenu)
+    //右侧跟左侧滑动
+    this.foodscroll.on('scrollEnd',(r)=>{
+        let rtop = Math.abs(r.y);
+        let tbarr =this.$refs.tabitem;
+        let len =tbarr.length;
+        let arr =[]
+       for(let i=0;i<len;++i){
+           if(rtop >tbarr[i].offsetTop && rtop <tbarr[i+1].offsetTop){
+               this.isActive = i;
+               
+           }
+       }
+       //保持居中
+       let middle = Math.ceil(this.$refs.leftcon.offsetHeight/2)-20;
+       
+      
+       let scrolltop =this.$refs.tab[this.isActive].offsetTop
+
+       if(scrolltop>middle){
+           this.mymenu.scrollTo(0,-scrolltop + middle,300);
+       }else{
+           this.mymenu.scrollTo(0,0,300)
+       }
+       
+       
+    })
 },
 computed:{
 
 },
 methods:{
+    
+    //右侧根据左侧滑动
     tabclick(index){
         this.isActive =index;
-        /* if(index <3){
-            this.tabTop =0
-        }else if(index+5>this.foods.length){
-            this.tabTop = -(this.foods.length-5)*42
-            console.log('33',this.foods.length)
-        }else{
-            this.tabTop = -(index-3)*42;
-        }
-        console.log(index) */
+        let scrolltop =this.$refs.tabitem[index].offsetTop
+        this.foodscroll.scrollTo(0,-scrolltop,300);
     }
 }
 }
